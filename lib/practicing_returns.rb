@@ -1,12 +1,17 @@
-require 'pry'
-
-def hello(array)
-  i = 0
+def hello_t(array)
+ i = 0 
+ collection = []
   while i < array.length
-    yield(array[i])
-    i += 1
+    collection << yield(array[i])
+    i += 1 
   end
+  collection
 end
 
+# call your method here!
 
-hello(["Tim", "Tom", "Jim"]) { |name| puts "Hi, #{name}" }
+hello_t(["Tim", "Tom", "Jim"]) do |name|
+  if name.start_with?("T")
+    "Hi, #{name}"
+  end
+end
